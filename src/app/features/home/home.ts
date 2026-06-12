@@ -13,7 +13,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [Navbar, Footer, Hero, Services, Portfolio, About, Contact,RouterLink],
   templateUrl: './home.html',
-  styleUrl: './home.css'
+  styleUrls: ['./home.css']
 })
 export class Home {
   showbtn = false; 

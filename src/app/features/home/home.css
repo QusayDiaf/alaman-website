@@ -16,10 +16,10 @@
 }
 /* From Uiverse.io by vinodjangid07 */ 
 .button {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background-color: rgb(20, 20, 20);
+  background-color: rgb(0, 0, 0);
   border: none;
   font-weight: 600;
   display: flex;
@@ -29,7 +29,7 @@
   cursor: pointer;
   transition-duration: 0.3s;
   overflow: hidden;
-  position: relative;
+  position: left;
 }
 
 .svgIcon {
@@ -45,7 +45,7 @@
   width: 140px;
   border-radius: 50px;
   transition-duration: 0.3s;
-  background-color: rgb(181, 160, 255);
+  background-color: rgb(65, 88, 214);
   align-items: center;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .button::before {
-  position: absolute;
+  position: left;
   bottom: -20px;
   content: "Back to Top";
   color: white;

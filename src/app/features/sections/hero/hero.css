@@ -1,0 +1,59 @@
+@media only screen and (max-width: 768px) {
+  .hero-title {
+    font-size: 45px;
+  }
+  .hero-subtitle {
+    font-size: 16px;
+  }
+}
+
+html, body {
+  margin: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+.large-header {
+  /* التدرج اللوني الفخم المختار لواجهة مشروعك */
+  background: linear-gradient(to bottom, #0a1535 0%, #103566 37%, #163a75 61%, #0c528e 100%);
+  text-align: center;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+#x-canvas {
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none; 
+  font-family: sans-serif;
+  color: #ffffff;
+}
+
+.hero-title {
+  text-transform: uppercase;
+  font-size: 70px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.hero-subtitle {
+  margin: 15px 0 0 0;
+  font-size: 22px;
+  color: #cbd5e1;
+}
+

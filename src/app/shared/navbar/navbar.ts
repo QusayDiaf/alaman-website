@@ -8,7 +8,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './navbar.html',
-  styleUrl: './navbar.css',
+  styleUrls: ['./navbar.css'],
 })
 export class Navbar {
 
