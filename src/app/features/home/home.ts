@@ -1,17 +1,24 @@
-import { Component } from '@angular/core';
-import { Contact } from '../sections/contact/contact';
-import { Portfolio } from '../sections/portfolio/portfolio';
-import { Services } from '../sections/services/services';
-import { About } from '../sections/about/about';
-import { Hero } from '../sections/hero/hero';
-import { RouterLink } from '@angular/router';
-import { Footer } from '../../shared/footer/footer';
+import { Component ,HostListener} from '@angular/core';
 import { Navbar } from '../../shared/navbar/navbar';
+import { Footer } from '../../shared/footer/footer';
+import { Hero } from '../sections/hero/hero';
+import { Services } from '../sections/services/services';
+import { Portfolio } from '../sections/portfolio/portfolio';
+import { About } from '../sections/about/about';
+import { Contact } from '../sections/contact/contact';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [ Hero, About, Services, Portfolio, Contact ,Footer,Navbar, ],
+  standalone: true,
+  imports: [Navbar, Footer, Hero, Services, Portfolio, About, Contact,RouterLink],
   templateUrl: './home.html',
-  styleUrl: './home.css',
+  styleUrl: './home.css'
 })
-export class Home {}
+export class Home {
+  showbtn = false; 
+  @HostListener('window:scroll')
+     checkscroll() {
+        this.showbtn = window.scrollY > 300;
+    }
+}

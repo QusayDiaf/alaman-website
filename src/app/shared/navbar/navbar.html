@@ -1,1 +1,60 @@
-<p>navbar works!</p>
+<header [className]="isScrolled 
+        ? 'sticky top-0 z-50 bg-white px-6 shadow-md transition-all duration-300 ease-in-out h-14 py-2' 
+        : 'sticky top-0 z-50 bg-white px-6 shadow-md transition-all duration-300 ease-in-out h-20 py-4'">
+  
+  <div class="mx-auto flex h-full w-full items-center justify-between">
+    
+    <div class="logo-container flex cursor-pointer items-center gap-3 btn-slide-in-logo" routerLink="/">
+        <img src="assets/images/govlink_shield_logo.svg" alt="Logo" 
+             [className]="isScrolled ? 'object-contain transition-all duration-300 h-8 w-8' : 'object-contain transition-all duration-300 h-10 w-10'">
+        <span class="site-name text-xl font-bold text-gray-800">ALaman</span>
+    </div>
+
+    <div class="flex items-center gap-8">
+        
+        <nav class="nav-links hidden md:block btn-slide-in">
+            <ul class="flex gap-6">
+                <li><a routerLink="/" fragment="hero" class="text-mid font-Regular text-gray-800 transition-colors hover:text-blue-200">Home</a></li>
+                <li><a routerLink="/" fragment="features" class="text-mid font-Regular text-gray-800 transition-colors hover:text-blue-200">Features</a></li>
+                <li><a routerLink="/" fragment="about" class="text-mid font-Regular text-gray-800 transition-colors hover:text-blue-200">About Us</a></li>
+                <li><a routerLink="/" fragment="contact" class="text-mid font-Regular text-gray-800 transition-colors hover:text-blue-200">Contact</a></li>
+            </ul>
+        </nav>
+
+        @if (showstarted) {
+          <!-- <button [className]="isScrolled 
+                  ? 'rounded-md bg-blue-500 text-white hover:bg-blue-600 transition-all duration-300 px-3 py-1 text-sm btn-slide-in' 
+                  : 'rounded-md bg-blue-500 text-white hover:bg-blue-600 transition-all duration-300 px-4 py-2 btn-slide-in'"> 
+              Get Started
+          </button> -->
+         <button
+  class="overflow-hidden relative w-27 h-11 p-0.5 bg-black text-white border-none rounded-md text-sm font-bold cursor-pointer z-5 group btn-slide-in"
+>
+  <span class="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
+    Get Started !
+  </span>
+
+  <span
+    class="absolute w-30 h-27 -top-6 -left-2 bg-sky-200 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-500 duration-1000 origin-right"
+  ></span>
+  <span
+    class="absolute w-30 h-27 -top-6 -left-2 bg-sky-400 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-700 duration-700 origin-right"
+  ></span>
+  <span
+    class="absolute w-30 h-27 -top-6 -left-2 bg-sky-600 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-1000 duration-500 origin-right"
+  ></span>
+
+  <span
+    class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 group-hover:duration-1000 duration-100 z-10"
+  >
+    Explore!
+  </span>
+</button>
+          
+        }
+
+
+    </div>
+
+  </div>
+</header>
