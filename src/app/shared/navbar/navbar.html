@@ -1,13 +1,35 @@
 <nav [class.scrolled]="isScrolled">
   
-  <div class="mx-auto flex h-full w-full items-center justify-between">
+  <div class="mx-auto flex h-18 w-full items-center justify-between">
     
     <div class="nav-logo">
-      <span class="nav-logo-icon">A</span>
-      <span class="nav-logo-text">
-        <span class="main">الأمان الرقمي</span>
-        <span class="sub">تقنية المعلومات</span>
+      
+      <span class="nav-logo-icon">
+        @if (showstarted) {
+         
+          <img src="assets/images/IMG_5640.png" class="rounded-xl h-23 w-23" alt="logo">
+          
+        }
+        @else {
+           <img src="assets/images/aaa.png" class="rounded-xl h-23 w-23" alt="logo">
+           
+          
+        }
+        
       </span>
+      @if (showstarted) {
+         <span class="nav-logo-text">
+        <span class=" pt-3 text-black font-bold"> شركة الأمان الرقمي الجديد</span>
+        <span class="sub pt-1 gap-2"> لتقنية المعلومات و الاتصالات</span>
+      </span>
+      }
+      @else {
+          <span class="nav-logo-text">
+        <span class="main pt-3"> شركة الأمان الرقمي الجديد</span>
+        <span class="sub pt-1 gap-2"> لتقنية المعلومات و الاتصالات</span>
+      </span>
+      }
+    
     </div>
 
     <ul class="nav-links">
