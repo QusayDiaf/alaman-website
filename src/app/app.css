@@ -1,0 +1,62 @@
+/* 1. إخفاء الماوس الأصلي - ضروري للمسة الاحترافية */
+
+
+/* 2. تصميم عنصر التتبع الأساسي (الدائرة الكبيرة - الحلقة) */
+.custom-cursor {
+  position: fixed;
+  width: 20px;  /* كبرنا الحجم قليلاً */
+  height: 20px;
+  
+  /* سر الفجوة هنا: نستخدم بوردر بدل باكجراوند */
+  background-color: transparent; /* خلفية شفافة */
+  border: 2px solid #3b82f6;     /* لون البوردر (الأزرق) */
+  border-radius: 50%;           /* دائرة */
+  
+  pointer-events: none; /* مهم جداً */
+  z-index: 9999;
+  
+  /* حركة أنعم وأكثر مرونة */
+  transition: 
+    transform 0.15s ease-out, 
+    width 0.2s ease, 
+    height 0.2s ease, 
+    border-color 0.2s ease, 
+    background-color 0.2s ease;
+    
+  /* جعل نقطة الارتكاز في المنتصف تماماً */
+  transform: translate(-50%, -50%); 
+  
+  /* إضافة توهج خفيف (Glossy/Neon effect) لجعلها أجمل */
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+}
+
+/* 3. تأثير إضافي (اختياري لكن احترافي جداً): نقطة صغيرة في المنتصف */
+/* يمكنك مسح هذا الجزء (custom-cursor::after) لو تبي فجوة كاملة */
+.custom-cursor::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+  background-color: #3b82f6; /* نفس لون البوردر */
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+/* 4. الحركات عند المرور على الروابط أو الأزرار */
+a:hover ~ .custom-cursor, 
+button:hover ~ .custom-cursor {
+  width: 20px; /* تكبير الحلقة */
+  height: 60px;
+  border-color: #ffffff; /* تغيير اللون للأبيض مثلاً */
+  background-color: rgba(255, 255, 255, 0.1); /* تعبئة شفافة جداً */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+/* إخفاء النقطة الصغيرة عند الهوفر (اختياري) */
+a:hover ~ .custom-cursor::after, 
+button:hover ~ .custom-cursor::after {
+  opacity: 0;
+}

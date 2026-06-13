@@ -100,11 +100,11 @@ nav.scrolled {
   transform: scaleX(1);
 }
 .shadow__btn {
-  padding: 10px 20px;
+  padding: 13px 24px;
   border: none;
   font-size: 17px;
   color: #fff;
-  border-radius: 7px;
+  border-radius: 23px;
   letter-spacing: 4px;
   font-weight: 700;
   text-transform: uppercase;

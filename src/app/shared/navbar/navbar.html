@@ -6,28 +6,32 @@
       
       <span class="nav-logo-icon">
         @if (showstarted) {
-         
+          <a routerLink="/" fragment="hero"> 
           <img src="assets/images/IMG_5640.png" class="rounded-xl h-23 w-23" alt="logo">
+          </a>
           
         }
         @else {
-           <img src="assets/images/aaa.png" class="rounded-xl h-23 w-23" alt="logo">
-           
+          <a routerLink="/" fragment="hero"> 
+          <img src="assets/images/aaa.png" class="rounded-xl h-23 w-23" alt="logo">
+           </a>
           
         }
         
       </span>
-      @if (showstarted) {
+      @if (showstarted) {<a routerLink="/" fragment="hero"> 
          <span class="nav-logo-text">
         <span class=" pt-3 text-black font-bold"> شركة الأمان الرقمي الجديد</span>
         <span class="sub pt-1 gap-2"> لتقنية المعلومات و الاتصالات</span>
       </span>
+    </a>
       }
-      @else {
-          <span class="nav-logo-text">
+      @else { <a routerLink="/" fragment="hero"> 
+          <span class="nav-logo-text"> 
         <span class="main pt-3"> شركة الأمان الرقمي الجديد</span>
         <span class="sub pt-1 gap-2"> لتقنية المعلومات و الاتصالات</span>
       </span>
+      </a>
       }
     
     </div>
@@ -41,7 +45,7 @@
     </ul>
     
     <button class="shadow__btn">
-     <a routerLink="/" fragment="contact" class="nav-cta">جدولة استشارة</a>
+     <a routerLink="/" fragment="contact" class="nav-cta rounded-3xl">جدولة استشارة</a>
 
     </button>
    
