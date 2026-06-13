@@ -99,8 +99,32 @@ nav.scrolled {
 .nav-links a:focus::after {
   transform: scaleX(1);
 }
+.shadow__btn {
+  padding: 10px 20px;
+  border: none;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 7px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 0.5s;
+  transition-property: box-shadow;
+}
 
-.nav-cta {
+.shadow__btn {
+  background: rgba(2, 66, 241, 0.747);
+  box-shadow: 0 0 25px rgba(52, 100, 233, 0.993);
+}
+
+.shadow__btn:hover {
+  box-shadow: 0 0 5px rgb(0,140,255),
+              0 0 25px rgb(0,140,255),
+              0 0 50px rgb(0,140,255),
+              0 0 100px rgb(0,140,255);
+}
+
+/* .nav-cta {
   background: linear-gradient(135deg, var(--deep-blue), var(--indigo));
   color: #fff;
   padding: 0.7rem 1.5rem;
@@ -108,11 +132,11 @@ nav.scrolled {
   font-weight: 700;
   box-shadow: 0 8px 18px rgba(47,77,160,0.25);
   transition: var(--transition);
-}
-
+} */
+/* 
 .nav-cta:hover {
   transform: translateY(-2px);
-}
+} */
 
 nav.scrolled .nav-links a {
   color: var(--text-primary);
