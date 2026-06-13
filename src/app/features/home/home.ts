@@ -6,12 +6,11 @@ import { Services } from '../sections/services/services';
 import { Portfolio } from '../sections/portfolio/portfolio';
 import { About } from '../sections/about/about';
 import { Contact } from '../sections/contact/contact';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [Navbar, Footer, Hero, Services, Portfolio, About, Contact,RouterLink],
+  imports: [Navbar, Footer, Hero, Services, Portfolio, About, Contact],
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
