@@ -1,6 +1,5 @@
 import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 
-// إخبار المترجم بوجود الدالة المخصصة على كائن الـ window العالمي
 declare var initConnectiveMesh: () => () => void;
 
 @Component({

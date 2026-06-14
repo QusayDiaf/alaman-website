@@ -1,31 +1,94 @@
-<section id="portfolio" class="portfolio-section">
+<div class="wave-divider" style="background: #ffffff;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" preserveAspectRatio="none" width="100%" height="80">
+    <path d="M0,20 C480,80 960,0 1440,50 L1440,80 L0,80 Z" fill="var(--light-gray)"/>
+  </svg>
+</div>
+
+<section id="projects">
+  <canvas id="projects-canvas"></canvas>
+
   <div class="container">
-    <span class="section-badge">أعمالنا</span>
-    <h2 class="section-title">مشاريع أمان نفذناها</h2>
-    <p class="section-subtitle">نماذج واقعية من أنظمة الحماية والتطوير الأمني التي قدمناها للعملاء.</p>
+    <div class="text-center reveal">
+      <div class="section-badge">مشاريعنا</div>
+      <h2 class="section-title">أبرز <span class="accent">مشاريعنا</span> المنجزة</h2>
+      <p class="section-subtitle">قصص نجاح حقيقية تعكس كفاءتنا وقدرتنا على تسليم حلول تقنية متميزة</p>
+    </div>
+
     <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-thumb"><div class="project-tag">SecureApp</div></div>
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#1A2B5E,#2F4DA0);">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="30" width="240" height="140" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+            <rect x="45" y="50" width="180" height="12" rx="3" fill="rgba(0,212,255,0.3)"/>
+            <rect x="45" y="72" width="120" height="8" rx="2" fill="rgba(255,255,255,0.1)"/>
+            <rect x="45" y="90" width="90" height="8" rx="2" fill="rgba(255,255,255,0.08)"/>
+            <rect x="45" y="115" width="60" height="28" rx="6" fill="rgba(47,77,160,0.7)"/>
+            <rect x="115" y="115" width="60" height="28" rx="6" fill="rgba(0,212,255,0.2)" stroke="rgba(0,212,255,0.4)" stroke-width="1"/>
+          </svg>
+          <div class="project-overlay">
+            <div class="project-overlay-btn">عرض التفاصيل</div>
+          </div>
+        </div>
         <div class="project-body">
-          <div class="project-tags"><span class="tag">أمن التطبيقات</span></div>
-          <h3 class="project-title">نظام إدارة هوية آمن</h3>
-          <p class="project-desc">حماية الوصول ومراقبة الأنشطة مع تجربة مستخدم سلسة.</p>
+          <div class="project-tags">
+            <span class="tag">Laravel</span>
+            <span class="tag">Vue.js</span>
+            <span class="tag">MySQL</span>
+          </div>
+          <div class="project-title">نظام إدارة الموارد البشرية</div>
+          <div class="project-desc">منظومة متكاملة لإدارة الموارد البشرية تشمل الرواتب والإجازات والأداء الوظيفي</div>
         </div>
       </div>
-      <div class="project-card">
-        <div class="project-thumb"><div class="project-tag">NetworkShield</div></div>
+
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#2F4DA0,#4A46A3);">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="30" width="100" height="140" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(123,158,248,0.3)" stroke-width="1"/>
+            <rect x="145" y="30" width="125" height="65" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(123,158,248,0.3)" stroke-width="1"/>
+            <rect x="145" y="105" width="125" height="65" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(123,158,248,0.3)" stroke-width="1"/>
+            <rect x="45" y="50" width="70" height="8" rx="2" fill="rgba(123,158,248,0.4)"/>
+            <rect x="45" y="68" width="55" height="6" rx="2" fill="rgba(255,255,255,0.1)"/>
+            <circle cx="80" cy="110" r="25" fill="rgba(47,77,160,0.5)" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+          </svg>
+          <div class="project-overlay">
+            <div class="project-overlay-btn">عرض التفاصيل</div>
+          </div>
+        </div>
         <div class="project-body">
-          <div class="project-tags"><span class="tag">شبكات</span></div>
-          <h3 class="project-title">شبكة ذكية مراقبة</h3>
-          <p class="project-desc">حلول مراقبة متقدمة للكشف على التهديدات والاستجابة الفورية.</p>
+          <div class="project-tags">
+            <span class="tag">Angular <i class="fa-brands fa-angular"></i></span>
+            <span class="tag">Jakarta EE <i class="fa-brands fa-java"></i></span>
+            <span class="tag">Jsf <i class="fa-brands fa-jsfiddle"></i></span>
+            <span class="tag">Primeface <i class="pi pi-prime
+"></i></span>
+          </div>
+          <div class="project-title">بوابة الخدمات الضريبية الشاملة    </div>
+          <div class="project-desc">تتعتمد منظومة  معمارية تقنية مرنة  (4-Tier) لإدارة دورة العمل الضريبي إلكترونياً بالكامل، بدءاً من إصدار الرقم الضريبي الموحد (TIN) ووصولاً إلى الأرشفة والتقارير الرقمية. توفر المنظومة حسابات إلكترونية خاصة للممولين لمتابعة أوضاعهم وتقديم الإقرارات، مع واجهة استعلام تتيح للجهات العامة التحقق من صحة المستخرجات والشهادات الضريبية. كما تدعم المنظومة التكامل التقني (APIs) مع مؤسسات الدولة والجهات الشريكة لتبادل المعلومات بشكل آمن ومنظم.</div>
         </div>
       </div>
-      <div class="project-card">
-        <div class="project-thumb"><div class="project-tag">DataGuard</div></div>
+
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#4A46A3,#1A2B5E);">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="150" cy="100" rx="80" ry="60" fill="rgba(47,77,160,0.3)" stroke="rgba(0,212,255,0.4)" stroke-width="1"/>
+            <circle cx="150" cy="100" r="30" fill="rgba(0,212,255,0.2)" stroke="rgba(0,212,255,0.6)" stroke-width="1.5"/>
+            <line x1="70" y1="100" x2="120" y2="100" stroke="rgba(0,212,255,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
+            <line x1="180" y1="100" x2="230" y2="100" stroke="rgba(0,212,255,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
+            <circle cx="55" cy="100" r="15" fill="rgba(74,70,163,0.5)" stroke="rgba(123,158,248,0.5)" stroke-width="1"/>
+            <circle cx="245" cy="100" r="15" fill="rgba(74,70,163,0.5)" stroke="rgba(123,158,248,0.5)" stroke-width="1"/>
+          </svg>
+          <div class="project-overlay">
+            <div class="project-overlay-btn">عرض التفاصيل</div>
+          </div>
+        </div>
         <div class="project-body">
-          <div class="project-tags"><span class="tag">بيانات</span></div>
-          <h3 class="project-title">حماية قواعد البيانات</h3>
-          <p class="project-desc">تشفير وإدارة وصول ذكي لتأمين معلومات شركتك الحساسة.</p>
+          <div class="project-tags">
+            <span class="tag">React</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Docker</span>
+          </div>
+          <div class="project-title">منصة التجارة الإلكترونية</div>
+          <div class="project-desc">منصة تجارة إلكترونية متكاملة مع نظام دفع آمن وإدارة مخزون ذكية</div>
         </div>
       </div>
     </div>
