@@ -6,7 +6,7 @@ import { Portfolio } from '../sections/portfolio/portfolio';
 import { Contact } from '../sections/contact/contact';
 import { Services } from '../sections/services/services';
 import { RouterLink } from "@angular/router";
-import { About } from '../sections/about./about';
+import { About } from '../sections/about/about';
 @Component({
   selector: 'app-home',
   standalone: true,
