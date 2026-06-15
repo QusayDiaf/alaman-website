@@ -1,86 +1,3 @@
-/*.services-section {
-  background: #fff;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2.5rem;
-}
-
-.service-card {
-  position: relative;
-  overflow: hidden;
-  background: var(--light-gray);
-  padding: 2rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid transparent;
-  transition: var(--transition);
-  cursor: pointer;
-}
-
-.service-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(47,77,160,0.12), rgba(74,70,163,0.14));
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-
-.service-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(47,77,160,0.12);
-}
-
-.service-card:hover::before {
-  opacity: 1;
-}
-
-.service-card-content {
-  position: relative;
-  z-index: 1;
-}
-
-.service-icon {
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(135deg, var(--deep-blue), var(--indigo));
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-  color: #fff;
-  font-size: 1.25rem;
-}
-
-.service-title {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--dark-navy);
-  margin-bottom: 0.5rem;
-}
-
-.service-subtitle {
-  font-size: 0.85rem;
-  color: var(--deep-blue);
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-}
-
-.service-desc {
-  color: var(--text-secondary);
-  line-height: 1.7;
-}
-
-@media (max-width: 768px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
-}
-*/
 /* ─── VARIABLES USED IN ABOUT SECTION ─── */
 :root {
   --deep-blue: #2F4DA0;
@@ -98,13 +15,28 @@
 
 /* ─── ABOUT SECTION STYLES ─── */
 #about { 
+  position: relative; /* مهم جداً لاحتواء الكانفاس بالخلفية */
   background: var(--light-gray); 
   padding: 6rem 2rem;
   direction: rtl;
   font-family: 'Cairo', sans-serif;
+  overflow: hidden;
+}
+
+/* ضبط الكانفاس ليكون كخلفية كاملة للقسم */
+.constellation-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none; /* للسماح بالضغط على العناصر فوقه */
 }
 
 .container { 
+  position: relative;
+  z-index: 1; /* لرفع المحتوى فوق الكانفاس */
   max-width: 1280px; 
   margin: 0 auto; 
 }
@@ -147,7 +79,8 @@
 }
 
 .about-main-card {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.9); /* جعل الخلفية شفافة قليلاً ليتناسق مع النجوم الخلفية */
+  backdrop-filter: blur(8px); /* تأثير زجاجي بسيط */
   border-radius: var(--radius-lg);
   padding: 2.5rem;
   box-shadow: var(--card-shadow);
@@ -199,8 +132,15 @@
 }
 
 .about-float-1 { 
+  position: absolute;
   bottom: -1.5rem; 
   left: -1.5rem; 
+  background: var(--dark-navy);
+  color: #fff;
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--card-shadow);
+  z-index: 2;
 }
 
 .about-float-1 .num { 
@@ -209,25 +149,21 @@
   color: var(--accent-cyan); 
 }
 
-.about-float-1 .lbl { 
-  font-size: 0.75rem; 
-  opacity: 0.7; 
-}
-
 .about-float-2 { 
+  position: absolute;
   top: -1rem; 
   right: -1rem; 
   background: linear-gradient(135deg, var(--deep-blue), var(--indigo)); 
+  color: #fff;
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--card-shadow);
+  z-index: 2;
 }
 
 .about-float-2 .num { 
   font-size: 1.5rem; 
   font-weight: 900; 
-}
-
-.about-float-2 .lbl { 
-  font-size: 0.7rem; 
-  opacity: 0.8; 
 }
 
 /* الميزات الجانبية */
@@ -242,7 +178,8 @@
   display: flex; 
   align-items: flex-start; 
   gap: 1rem;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
   padding: 1.25rem 1.5rem;
   border-radius: var(--radius-md);
   box-shadow: 0 2px 12px rgba(47,77,160,0.06);
@@ -300,6 +237,5 @@
 }
 @media (max-width: 768px) {
   #about { padding: 4rem 1.25rem; }
-  .about-float-card { display: none; } 
+  .about-float-1, .about-float-2 { display: none; } 
 }
-

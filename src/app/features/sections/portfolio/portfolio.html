@@ -11,74 +11,214 @@
     <div class="text-center reveal">
       <div class="section-badge">مشاريعنا</div>
       <h2 class="section-title">أبرز <span class="accent">مشاريعنا</span> المنجزة</h2>
-      <p class="section-subtitle">قصص نجاح حقيقية تعكس كفاءتنا وقدرتنا على تسليم حلول تقنية متميزة</p>
+      <p class=" text-center text-gray-500">قصص نجاح حقيقية تعكس كفاءتنا وقدرتنا على تسليم حلول تقنية متميزة</p>
     </div>
 
     <div class="projects-grid">
       <div class="project-card reveal reveal-delay-1">
         <div class="project-thumb" style="background:linear-gradient(135deg,#1A2B5E,#2F4DA0);">
-          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
             <rect x="30" y="30" width="240" height="140" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
             <rect x="45" y="50" width="180" height="12" rx="3" fill="rgba(0,212,255,0.3)"/>
             <rect x="45" y="72" width="120" height="8" rx="2" fill="rgba(255,255,255,0.1)"/>
             <rect x="45" y="90" width="90" height="8" rx="2" fill="rgba(255,255,255,0.08)"/>
             <rect x="45" y="115" width="60" height="28" rx="6" fill="rgba(47,77,160,0.7)"/>
             <rect x="115" y="115" width="60" height="28" rx="6" fill="rgba(0,212,255,0.2)" stroke="rgba(0,212,255,0.4)" stroke-width="1"/>
-          </svg>
+          </svg> -->
+          
+          
           <div class="project-overlay">
-            <div class="project-overlay-btn">عرض التفاصيل</div>
+            
+             <button (click)="viewdetiled()" 
+  class="relative cursor-pointer py-4 px-8 text-center font-barlow inline-flex justify-center text-base uppercase text-white rounded-lg border-solid transition-transform duration-300 ease-in-out group outline-offset-4 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 overflow-hidden"
+>
+            
+  <span class="relative z-20">عرض التفاصيل</span>
+
+  <span
+    class="absolute left-[-75%] top-0 h-full w-[50%] bg-white/20 rotate-12 z-10 blur-lg group-hover:left-[125%] transition-all duration-1000 ease-in-out"
+  ></span>
+
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-tl-lg border-l-2 border-t-2 top-0 left-0"
+  ></span>
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute group-hover:h-[90%] h-[60%] rounded-tr-lg border-r-2 border-t-2 top-0 right-0"
+  ></span>
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[60%] group-hover:h-[90%] rounded-bl-lg border-l-2 border-b-2 left-0 bottom-0"
+  ></span>
+  <span
+            class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-br-lg border-r-2 border-b-2 right-0 bottom-0"
+        ></span>
+      </button>
           </div>
         </div>
+       @if (view) {
+      
+
+  <div class="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-md animate-fade-in" 
+       (click)="closeview()" dir="rtl">
+    
+    <div class="relative w-full max-w-lg transform overflow-hidden rounded-2xl bg-white text-right shadow-2xl transition-all animate-slide-up" 
+         (click)="$event.stopPropagation()">
+      
+      <div class="bg-gradient-to-r from-blue-500 to-blue-900 px-6 py-4 flex items-center justify-between">
+        <h3 class="text-lg font-extrabold text-white ">
+          تفاصيل مشاريع الأمان الرقمي
+        </h3>
+        <button class="text-white/80 hover:text-white text-2xl font-light transition-colors leading-none focus:outline-none" 
+                (click)="closeview()">
+     
+        </button>
+      </div>
+      
+      <div class="p-6 space-y-3">
+        
+        <p class="text-sm text-slate-600 leading-relaxed">
+          هنا يمكنك استعراض كافة التفاصيل الفنية والتقنيات المستخدمة في بناء وتطوير برمجياتنا المعتمدة داخل وخارج ليبيا.
+        </p>
+      </div>
+      
+      <div class="bg-slate-50 px-6 py-4 flex justify-end border-t border-slate-100">
+        <button class="px-5 py-2 bg-slate-900 text-white rounded-xl text-sm font-bold shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-200" 
+                (click)="closeview()">
+          إغلاق
+        </button>
+      </div>
+
+    </div>
+  </div>
+}
+
         <div class="project-body">
           <div class="project-tags">
-            <span class="tag">Laravel</span>
-            <span class="tag">Vue.js</span>
-            <span class="tag">MySQL</span>
+            <span class="tag">Angular<i class="fa-brands fa-angular"></i></span>
+            <span class="tag">primeNG <i class="pi pi-prime"></i></span>
+            <span class="tag">Sprigboot <i class="fa-solid fa-leaf"></i></span>
           </div>
-          <div class="project-title">نظام إدارة الموارد البشرية</div>
+          <div class="project-title">نظام إدارة الكليات - College information system</div>
           <div class="project-desc">منظومة متكاملة لإدارة الموارد البشرية تشمل الرواتب والإجازات والأداء الوظيفي</div>
         </div>
       </div>
 
       <div class="project-card reveal reveal-delay-2">
         <div class="project-thumb" style="background:linear-gradient(135deg,#2F4DA0,#4A46A3);">
-          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
             <rect x="30" y="30" width="100" height="140" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(123,158,248,0.3)" stroke-width="1"/>
             <rect x="145" y="30" width="125" height="65" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(123,158,248,0.3)" stroke-width="1"/>
             <rect x="145" y="105" width="125" height="65" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(123,158,248,0.3)" stroke-width="1"/>
             <rect x="45" y="50" width="70" height="8" rx="2" fill="rgba(123,158,248,0.4)"/>
             <rect x="45" y="68" width="55" height="6" rx="2" fill="rgba(255,255,255,0.1)"/>
             <circle cx="80" cy="110" r="25" fill="rgba(47,77,160,0.5)" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
-          </svg>
+          </svg> -->
           <div class="project-overlay">
-            <div class="project-overlay-btn">عرض التفاصيل</div>
+             <button (click)="viewdetiled()"
+  class="relative cursor-pointer py-4 px-8 text-center font-barlow inline-flex justify-center text-base uppercase text-white rounded-lg border-solid transition-transform duration-300 ease-in-out group outline-offset-4 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 overflow-hidden"
+>
+  <span class="relative z-20">عرض التفاصيل</span>
+
+  <span
+    class="absolute left-[-75%] top-0 h-full w-[50%] bg-white/20 rotate-12 z-10 blur-lg group-hover:left-[125%] transition-all duration-1000 ease-in-out"
+  ></span>
+
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-tl-lg border-l-2 border-t-2 top-0 left-0"
+  ></span>
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute group-hover:h-[90%] h-[60%] rounded-tr-lg border-r-2 border-t-2 top-0 right-0"
+  ></span>
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[60%] group-hover:h-[90%] rounded-bl-lg border-l-2 border-b-2 left-0 bottom-0"
+  ></span>
+  <span
+            class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-br-lg border-r-2 border-b-2 right-0 bottom-0"
+        ></span>
+      </button>
           </div>
         </div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="tag">Angular <i class="fa-brands fa-angular"></i></span>
-            <span class="tag">Jakarta EE <i class="fa-brands fa-java"></i></span>
-            <span class="tag">Jsf <i class="fa-brands fa-jsfiddle"></i></span>
-            <span class="tag">Primeface <i class="pi pi-prime
-"></i></span>
-          </div>
-          <div class="project-title">بوابة الخدمات الضريبية الشاملة    </div>
+        @if (view) {
+  <div class="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-md animate-fade-in" 
+       (click)="closeview()" dir="rtl">
+    
+    <div class="relative w-full max-w-lg transform overflow-hidden rounded-2xl bg-white text-right shadow-2xl transition-all animate-slide-up" 
+         (click)="$event.stopPropagation()">
+      
+      <div class="bg-gradient-to-r from-blue-500 to-blue-900 px-6 py-4 flex items-center justify-between">
+        <h3 class="text-lg font-extrabold text-white ">
+         بوابة الخدمات الضريبية الشاملة - Tax services portal system
+        </h3>
+        <button class="text-white/80 hover:text-white text-2xl font-light transition-colors leading-none focus:outline-none" 
+                (click)="closeview()">
+     
+        </button>
+      </div>
+      
+      <div class="p-6 space-y-3">
+        
+        <p class="text-sm text-slate-600 leading-relaxed">
+تتعتمد منظومة  معمارية تقنية مرنة  (4-Tier) لإدارة دورة العمل الضريبي إلكترونياً بالكامل، بدءاً من إصدار الرقم الضريبي الموحد (TIN) ووصولاً إلى الأرشفة والتقارير الرقمية. توفر المنظومة حسابات إلكترونية خاصة للممولين لمتابعة أوضاعهم وتقديم الإقرارات، مع واجهة استعلام تتيح للجهات العامة التحقق من صحة المستخرجات والشهادات الضريبية. كما تدعم المنظومة التكامل التقني (APIs) مع مؤسسات الدولة والجهات الشريكة لتبادل المعلومات بشكل آمن ومنظم        </p>
+      </div>
+      
+      <div class="bg-slate-50 px-6 py-4 flex justify-end border-t border-slate-100">
+        <button class="px-5 py-2 bg-slate-900 text-white rounded-xl text-sm font-bold shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-200" 
+                (click)="closeview()">
+          إغلاق
+        </button>
+      </div>
+
+    </div>
+  </div>
+}
+       <div class="project-body">
+  <div class="project-tags">
+    <span class="tag">Angular <i class="fa-brands fa-angular"></i></span>
+    <span class="tag">Jakarta EE <i class="fa-brands fa-java"></i></span>
+    <span class="tag">Jsf <i class="fa-brands fa-jsfiddle"></i></span>
+    <span class="tag">Primeface <i class="pi pi-prime"></i></span>
+  </div>
+
+          <div class="project-title">بوابة الخدمات الضريبية الشاملة     </div>
           <div class="project-desc">تتعتمد منظومة  معمارية تقنية مرنة  (4-Tier) لإدارة دورة العمل الضريبي إلكترونياً بالكامل، بدءاً من إصدار الرقم الضريبي الموحد (TIN) ووصولاً إلى الأرشفة والتقارير الرقمية. توفر المنظومة حسابات إلكترونية خاصة للممولين لمتابعة أوضاعهم وتقديم الإقرارات، مع واجهة استعلام تتيح للجهات العامة التحقق من صحة المستخرجات والشهادات الضريبية. كما تدعم المنظومة التكامل التقني (APIs) مع مؤسسات الدولة والجهات الشريكة لتبادل المعلومات بشكل آمن ومنظم.</div>
         </div>
       </div>
 
       <div class="project-card reveal reveal-delay-3">
         <div class="project-thumb" style="background:linear-gradient(135deg,#4A46A3,#1A2B5E);">
-          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
             <ellipse cx="150" cy="100" rx="80" ry="60" fill="rgba(47,77,160,0.3)" stroke="rgba(0,212,255,0.4)" stroke-width="1"/>
             <circle cx="150" cy="100" r="30" fill="rgba(0,212,255,0.2)" stroke="rgba(0,212,255,0.6)" stroke-width="1.5"/>
             <line x1="70" y1="100" x2="120" y2="100" stroke="rgba(0,212,255,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
             <line x1="180" y1="100" x2="230" y2="100" stroke="rgba(0,212,255,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
             <circle cx="55" cy="100" r="15" fill="rgba(74,70,163,0.5)" stroke="rgba(123,158,248,0.5)" stroke-width="1"/>
             <circle cx="245" cy="100" r="15" fill="rgba(74,70,163,0.5)" stroke="rgba(123,158,248,0.5)" stroke-width="1"/>
-          </svg>
+          </svg> -->
           <div class="project-overlay">
-            <div class="project-overlay-btn">عرض التفاصيل</div>
+            <div >
+              <button (click)="viewdetiled()"
+  class="relative cursor-pointer py-4 px-8 text-center font-barlow inline-flex justify-center text-base uppercase text-white rounded-lg border-solid transition-transform duration-300 ease-in-out group outline-offset-4 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 overflow-hidden"
+>
+  <span class="relative z-20">عرض التفاصيل</span>
+
+  <span
+    class="absolute left-[-75%] top-0 h-full w-[50%] bg-white/20 rotate-12 z-10 blur-lg group-hover:left-[125%] transition-all duration-1000 ease-in-out"
+  ></span>
+
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-tl-lg border-l-2 border-t-2 top-0 left-0"
+  ></span>
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute group-hover:h-[90%] h-[60%] rounded-tr-lg border-r-2 border-t-2 top-0 right-0"
+  ></span>
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[60%] group-hover:h-[90%] rounded-bl-lg border-l-2 border-b-2 left-0 bottom-0"
+  ></span>
+  <span
+            class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-br-lg border-r-2 border-b-2 right-0 bottom-0"
+        ></span>
+      </button>
+   
+            </div>
           </div>
         </div>
         <div class="project-body">

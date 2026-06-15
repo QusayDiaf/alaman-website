@@ -82,7 +82,7 @@
 
 .project-body { padding: 1.5rem; }
 
-.project-tags { 
+/* .project-tags { 
   display: flex; 
   gap: 0.5rem; 
   flex-wrap: wrap; 
@@ -96,6 +96,35 @@
   font-weight: 700;
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
+} */
+.project-tags { 
+  display: flex; 
+  gap: 0.5rem; 
+  flex-wrap: wrap; 
+  margin-bottom: 0.75rem; 
+}
+
+/* التنسيق المعدل للـ Tag */
+.tag {
+  background: rgba(47,77,160,0.08);
+  color: var(--deep-blue);
+  font-size: 0.72rem; 
+  font-weight: 700;
+  padding: 0.3rem 0.6rem; /* تم زيادة الارتفاع قليلاً */
+  border-radius: 4px;
+  
+  /* كود إضافي لجعل الأيقونة تظهر بمحاذاة النص تماماً */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem; /* مسافة بين النص والأيقونة */
+  white-space: nowrap; /* يمنع نزول الأيقونة لسطر جديد */
+}
+
+/* تنسيق حجم الأيقونة بداخل التاج */
+.tag i {
+  font-size: 0.85rem;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .project-title { 
