@@ -1,0 +1,80 @@
+/* ─── TECH STACK SECTION ───────────────────────────────── */
+#tech-stack { 
+  background: #fff; 
+}
+
+/* شبكة توزيع بطاقات التقنيات (5 أعمدة افتراضياً) */
+.tech-grid {
+  display: grid; 
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem; 
+  margin-top: 3rem;
+}
+
+/* تصميم بطاقة التقنية المفردة */
+.tech-card {
+  background: var(--light-gray);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border: 1.5px solid transparent;
+  transition: var(--transition); /* حركة سلسة مأخوذة من الـ Root */
+  cursor: pointer;
+}
+
+/* تأثير الـ Hover عند مرور الماوس على البطاقة */
+.tech-card:hover {
+  border-color: var(--deep-blue);
+  background: #fff;
+  transform: translateY(-4px); /* رفع البطاقة لأعلى قليلاً */
+  box-shadow: var(--card-shadow); /* إضافة الظل المعرف في الـ Root */
+}
+
+/* تصميم الشعار أو الأيقونة داخل البطاقة */
+.tech-logo {
+  width: 48px; 
+  height: 48px;
+  margin: 0 auto 0.75rem;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  font-size: 2rem;
+}
+
+/* اسم التقنية */
+.tech-name { 
+  font-size: 0.85rem; 
+  font-weight: 700; 
+  color: var(--dark-navy); 
+}
+
+/* نوع التقنية أو تخصصها (مثل: Front-End / Back-End) */
+.tech-type { 
+  font-size: 0.72rem; 
+  color: var(--text-secondary); 
+  margin-top: 0.2rem; 
+}
+
+
+/* ─── RESPONSIVE FOR TECH STACK (التجاوب مع الشاشات) ─── */
+
+/* الشاشات المتوسطة والأجهزة اللوحية (تحويل الشبكة إلى 4 أعمدة) */
+@media (max-width: 1024px) {
+  .tech-grid { 
+    grid-template-columns: repeat(4, 1fr); 
+  }
+}
+
+/* الشاشات الصغيرة والهواتف (تحويل الشبكة إلى 3 أعمدة) */
+@media (max-width: 768px) {
+  .tech-grid { 
+    grid-template-columns: repeat(3, 1fr); 
+  }
+}
+
+/* الشاشات الصغيرة جداً (تحويل الشبكة إلى عمودين) */
+@media (max-width: 480px) {
+  .tech-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
