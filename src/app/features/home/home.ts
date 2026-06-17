@@ -7,10 +7,13 @@ import { Contact } from '../sections/contact/contact';
 import { Services } from '../sections/services/services';
 import { RouterLink } from "@angular/router";
 import { About } from '../sections/about/about';
+import { Techs } from '../sections/techs/techs';
+import { Technical } from "../sections/technical/technical";
+
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [Navbar, Footer, Hero, Portfolio, Contact, Services, RouterLink, About],
+  imports: [Navbar, Footer, Hero, Portfolio, Contact, Services, RouterLink, About, Techs, Technical],
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })

@@ -1,25 +1,39 @@
-// جعل الدالة متاحة على مستوى الـ window ليراها فريمورك Angular
-window.initConnectiveMesh = function() {
+// MIT license
+// By @nodws with github.com/greensock/GreenSock-JS, see more examples at greensock.com/examples-showcases
+	(function() {
+		var lastTime = 0;
+		var vendors = ['ms', 'moz', 'webkit', 'o'];
+		for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+			window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+			window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+				|| window[vendors[x]+'CancelRequestAnimationFrame'];
+		}
+
+		if (!window.requestAnimationFrame)
+			window.requestAnimationFrame = function(callback, element) {
+				var currTime = new Date().getTime();
+				var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+				var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+					timeToCall);
+				lastTime = currTime + timeToCall;
+				return id;
+			};
+
+		if (!window.cancelAnimationFrame)
+			window.cancelAnimationFrame = function(id) {
+				clearTimeout(id);
+			};
+	}());
+
+
+	(function() {
+
     var width, height, largeHeader, canvas, ctx, points, target, animateHeader = true;
-    var animationFrameId; // لمعرفة الـ ID الخاص بالأنيميشن لإيقافه لاحقاً
 
-    var requestAnimationFrame = window.requestAnimationFrame || 
-                              window.mozRequestAnimationFrame || 
-                              window.webkitRequestAnimationFrame || 
-                              window.msRequestAnimationFrame;
-                              
-    var cancelAnimationFrame = window.cancelAnimationFrame || 
-                             window.mozCancelAnimationFrame || 
-                             window.webkitCancelAnimationFrame || 
-                             window.msCancelAnimationFrame;
-
-    init();
-
-    function init() {
-        initHeader();
-        initAnimation();
-        addListeners();
-    }
+    // Main
+    initHeader();
+    initAnimation();
+    addListeners();
 
     function initHeader() {
         width = window.innerWidth;
@@ -27,39 +41,32 @@ window.initConnectiveMesh = function() {
         target = {x: width/2, y: height/2};
 
         largeHeader = document.getElementById('large-header');
-        if (!largeHeader) return; 
-        largeHeader.style.height = height+'px';
+ 
+      largeHeader.style.height = height+'px';
 
         canvas = document.getElementById('x-canvas');
-        if (!canvas) return;
         canvas.width = width;
         canvas.height = height;
         ctx = canvas.getContext('2d');
 
+        // create points
         points = [];
-        var puntitos = 20;
+        var puntitos=20;
         for(var x = 0; x < width; x = x + width/puntitos) {
             for(var y = 0; y < height; y = y + height/puntitos) {
                 var px = x + Math.random()*width/puntitos;
                 var py = y + Math.random()*height/puntitos;
-                var p = {
-                    x: px, 
-                    originX: px, 
-                    y: py, 
-                    originY: py,
-                    targetX: px,
-                    targetY: py,
-                    speed: 0.01 + Math.random() * 0.02
-                };
+                var p = {x: px, originX: px, y: py, originY: py };
                 points.push(p);
             }
         }
 
+        // for each point find the 5 closest points
         for(var i = 0; i < points.length; i++) {
             var closest = [];
             var p1 = points[i];
             for(var j = 0; j < points.length; j++) {
-                var p2 = points[j];
+                var p2 = points[j]
                 if(!(p1 == p2)) {
                     var placed = false;
                     for(var k = 0; k < 5; k++) {
@@ -84,12 +91,14 @@ window.initConnectiveMesh = function() {
             p1.closest = closest;
         }
 
+        // assign a circle to each point
         for(var i in points) {
             var c = new Circle(points[i], 2+Math.random()*2, 'rgba(200,200,255,255)');
             points[i].circle = c;
         }
     }
 
+    // Event handling
     function addListeners() {
         if(!('ontouchstart' in window)) {
             window.addEventListener('mousemove', mouseMove);
@@ -99,11 +108,12 @@ window.initConnectiveMesh = function() {
     }
 
     function mouseMove(e) {
-        var posx = 0, posy = 0;
+        var posx = posy = 0;
         if (e.pageX || e.pageY) {
             posx = e.pageX;
             posy = e.pageY;
-        } else if (e.clientX || e.clientY) {
+        }
+        else if (e.clientX || e.clientY)    {
             posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
             posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
         }
@@ -119,53 +129,54 @@ window.initConnectiveMesh = function() {
     function resize() {
         width = window.innerWidth;
         height = window.innerHeight;
-        if(largeHeader) largeHeader.style.height = height+'px';
-        if(canvas) {
-            canvas.width = width;
-            canvas.height = height;
-        }
+        largeHeader.style.height = height+'px';
+        canvas.width = width;
+        canvas.height = height;
     }
 
+    // animation
     function initAnimation() {
         animate();
+        for(var i in points) {
+            shiftPoint(points[i]);
+        }
     }
 
     function animate() {
-        if(animateHeader && ctx) {
+        if(animateHeader) {
             ctx.clearRect(0,0,width,height);
-            
             for(var i in points) {
-                var p = points[i];
-
-                if (Math.abs(p.x - p.targetX) < 1 && Math.abs(p.y - p.targetY) < 1) {
-                    p.targetX = p.originX - 50 + Math.random() * 100;
-                    p.targetY = p.originY - 50 + Math.random() * 100;
-                }
-                p.x += (p.targetX - p.x) * p.speed;
-                p.y += (p.targetY - p.y) * p.speed;
-
-                var dist = getDistance(target, p);
-                if(dist < 4000) {
-                    p.active = 0.3;
-                    p.circle.active = 0.6;
-                } else if(dist < 20000) {
-                    p.active = 0.1;
-                    p.circle.active = 0.3;
-                } else if(dist < 40000) {
-                    p.active = 0.02;
-                    p.circle.active = 0.1;
+                // detect points in range
+                if(Math.abs(getDistance(target, points[i])) < 4000) {
+                    points[i].active = 0.3;
+                    points[i].circle.active = 0.6;
+                } else if(Math.abs(getDistance(target, points[i])) < 20000) {
+                    points[i].active = 0.1;
+                    points[i].circle.active = 0.3;
+                } else if(Math.abs(getDistance(target, points[i])) < 40000) {
+                    points[i].active = 0.02;
+                    points[i].circle.active = 0.1;
                 } else {
-                    p.active = 0;
-                    p.circle.active = 0;
+                    points[i].active = 0;
+                    points[i].circle.active = 0;
                 }
 
-                drawLines(p);
-                p.circle.draw();
+                drawLines(points[i]);
+                points[i].circle.draw();
             }
         }
-        animationFrameId = requestAnimationFrame(animate);
+        requestAnimationFrame(animate);
     }
 
+    function shiftPoint(p) {
+        TweenLite.to(p, 1+1*Math.random(), {x:p.originX-50+Math.random()*50,
+            y: p.originY-50+Math.random()*50, ease:Circ.easeInOut,
+            onComplete: function() {
+                shiftPoint(p);
+            }});
+    }
+
+    // Canvas manipulation
     function drawLines(p) {
         if(!p.active) return;
         for(var i in p.closest) {
@@ -179,9 +190,13 @@ window.initConnectiveMesh = function() {
 
     function Circle(pos,rad,color) {
         var _this = this;
-        _this.pos = pos || null;
-        _this.radius = rad || null;
-        _this.color = color || null;
+
+        // constructor
+        (function() {
+            _this.pos = pos || null;
+            _this.radius = rad || null;
+            _this.color = color || null;
+        })();
 
         this.draw = function() {
             if(!_this.active) return;
@@ -192,16 +207,11 @@ window.initConnectiveMesh = function() {
         };
     }
 
+    // Util
     function getDistance(p1, p2) {
         return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
     }
 
-    // إرجاع دالة التدمير لتنظيف الذاكرة عند الخروج من الكومبوننت
-    return function destroy() {
-        animateHeader = false;
-        if (animationFrameId) cancelAnimationFrame(animationFrameId);
-        window.removeEventListener('mousemove', mouseMove);
-        window.removeEventListener('scroll', scrollCheck);
-        window.removeEventListener('resize', resize);
-    };
-};
+})();
+
+

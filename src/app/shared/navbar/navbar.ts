@@ -21,5 +21,17 @@ export class Navbar {
     this.showstarted = window.scrollY > 300;
   }
  
+  
+  isMobileMenuOpen = false;
 
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu() {
+    this.isMobileMenuOpen = false;
+  }
 }
+ 
+
+

@@ -157,4 +157,170 @@ nav.scrolled .nav-cta {
     display: none;
   }
 }
+/* ═══ التنسيقات الأساسية لشريط التنقل ═══ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+}
 
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1001; /* يبقى فوق القائمة الجانبية */
+}
+
+.nav-logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ═══ زر الهمبرغر (قائمة الموبايل) ═══ */
+.mobile-menu-toggle {
+  display: none; /* مخفي في الشاشات الكبيرة */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.mobile-menu-toggle .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #fff; /* يتغير حسب تصميمك */
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* تحويل الزر إلى علامة X عند الفتح */
+.mobile-menu-open .mobile-menu-toggle .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.mobile-menu-open .mobile-menu-toggle .bar:nth-child(2) {
+  opacity: 0;
+}
+.mobile-menu-open .mobile-menu-toggle .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* عند عمل السكرول، نغير لون خطوط الزر إذا كانت الخلفية بيضاء */
+.scrolled .mobile-menu-toggle .bar {
+  background-color: #000;
+}
+
+/* ═══ متجاوب الشاشات الصغيرة (الهواتف والتابلت) ═══ */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex; /* يظهر فقط هنا */
+  }
+
+  .nav-navigation-wrapper {
+    position: fixed;
+    top: 0;
+    right: -100%; /* مخفي خارج الشاشة يميناً */
+    width: 75%;
+    height: 100vh;
+    background-color: rgba(10, 21, 53, 0.98); /* نفس لون خلفية الهيرو الداكن */
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transition: right 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+    z-index: 1000;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+  }
+
+  /* عندما تصبح القائمة نشطة تندفع للداخل */
+  .nav-navigation-wrapper.active {
+    right: 0;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    padding: 0;
+  }
+
+  .nav-links li a {
+    font-size: 1.25rem;
+    color: #fff !important; /* لضمان وضوح الروابط في الخلفية القاتمة */
+  }
+
+  .mobile-cta-btn {
+    margin-top: 1rem;
+    width: 80%;
+  }
+  
+  .nav-logo-text .sub {
+    font-size: 0.7rem; /* تصغير النص الفرعي في الموبايل لكي لا يتداخل */
+  }
+}
+
+/* ═══ الشاشات الكبيرة ═══ */
+@media (min-width: 769px) {
+  .nav-navigation-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    margin-right: 2rem; /* يترك مسافة للشعار */
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    margin: 0 auto; /* يوسط الروابط في المنتصف */
+  }
+  
+  .mobile-cta-btn {
+    display: block;
+  }
+}
+/* عند نزول المستخدم في الصفحة (Scroll) */
+nav.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* تعديل لون نصوص القائمة الكبيرة لتصبح داكنة عند عمل السكرول */
+nav.scrolled ul.hidden md\:flex a {
+  color: #1e293b;
+}
+nav.scrolled ul.hidden md\:flex a:hover {
+  color: #0c528e;
+}
+
+/* تنسيحات الزر المخصص لديك (ابقيتها كما هي لكي لا يتغير شكل التصميم الفعلي) */
+.shadow__btn {
+ 
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(12, 82, 142, 0.4);
+}
+
+.shadow__btn:hover {
+  border: none;
+  background: linear-gradient(100deg, #0c528e, #4139d3);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.nav-cta {
+  color: #fff;
+  display: block;
+}
