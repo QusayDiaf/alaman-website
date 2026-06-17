@@ -1,3 +1,6 @@
+/* ════════════════════════════════════════════════════════════
+   ═══ شريط التنقل الرئيسي (NAV) ═══
+   ════════════════════════════════════════════════════════════ */
 nav {
   position: fixed;
   top: 0;
@@ -5,16 +8,19 @@ nav {
   left: 0;
   z-index: 1000;
   padding: 1rem 2rem;
-  transition: var(--transition);
   display: flex;
   justify-content: center;
   background: transparent;
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* تأثير الشفافية والظل عند النزول (Scroll) */
 nav.scrolled {
-  background: rgba(255,255,255,0.95);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
-  box-shadow: 0 2px 24px rgba(47,77,160,0.1);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   padding: 0.75rem 2rem;
 }
 
@@ -26,26 +32,17 @@ nav.scrolled {
   gap: 1rem;
 }
 
+/* ═══ الشعار (Logo) ═══ */
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 10px;
+  z-index: 1001; 
 }
 
-/* .nav-logo-icon {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, var(--deep-blue), var(--indigo));
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: 900;
-} */
-
 .nav-logo-text {
+  display: flex;
+  flex-direction: column;
   line-height: 1.2;
   text-align: right;
 }
@@ -62,13 +59,17 @@ nav.scrolled {
   font-size: 0.99rem;
   color: var(--text-secondary);
   width: 500px;
-  
 }
 
+/* تغيير ألوان نصوص الشعار عند السكرول */
+nav.scrolled .nav-logo-text .main {
+  color: #0f172a;
+}
+
+/* ═══ الروابط (Navigation Links) ═══ */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -78,10 +79,11 @@ nav.scrolled {
   color: #fff;
   font-size: 0.9rem;
   font-weight: 600;
-  transition: var(--transition);
   position: relative;
+  transition: var(--transition);
 }
 
+/* تأثير الخط السفلي عند الـ Hover */
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -99,6 +101,65 @@ nav.scrolled {
 .nav-links a:focus::after {
   transform: scaleX(1);
 }
+
+/* ألوان الروابط عند السكرول في الشاشات الكبيرة */
+nav.scrolled .nav-links a {
+  color: #1e293b;
+}
+nav.scrolled .nav-links a:hover {
+  color: #0c528e;
+}
+
+/* ════════════════════════════════════════════════════════════
+   ═══ زر الهمبرغر المطور (كبير وواضح ويتحول إلى X) ═══
+   ════════════════════════════════════════════════════════════ */
+.mobile-menu-toggle {
+  display: none; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; 
+  width: 44px; 
+  height: 44px; 
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+  position: relative;
+}
+
+.mobile-menu-toggle .bar {
+  width: 32px; 
+  height: 4px; 
+  background-color: #fff; 
+  border-radius: 4px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, background-color 0.3s ease;
+}
+
+/* الأنميشن الهندسي الدقيق للتحول لعلامة X عند الضغط */
+.mobile-menu-open .mobile-menu-toggle .bar:nth-child(1) {
+  transform: translateY(12px) rotate(45deg);
+}
+.mobile-menu-open .mobile-menu-toggle .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.mobile-menu-open .mobile-menu-toggle .bar:nth-child(3) {
+  transform: translateY(-12px) rotate(-45deg);
+}
+
+/* ألوان خطوط الزر عند السكرول */
+nav.scrolled .mobile-menu-toggle .bar {
+  background-color: #0f172a;
+}
+.mobile-menu-open nav.scrolled .mobile-menu-toggle .bar {
+  background-color: #fff; /* تظل بيضاء داخل القائمة الداكنة المفتوحة */
+}
+
+/* ════════════════════════════════════════════════════════════
+   ═══ الزر المشع (Shadow Button) ═══
+   ════════════════════════════════════════════════════════════ */
 .shadow__btn {
   padding: 13px 24px;
   border: none;
@@ -108,219 +169,99 @@ nav.scrolled {
   letter-spacing: 4px;
   font-weight: 700;
   text-transform: uppercase;
-  transition: 0.5s;
-  transition-property: box-shadow;
-}
-
-.shadow__btn {
   background: rgba(2, 66, 241, 0.747);
-  box-shadow: 0 0 25px rgba(52, 100, 233, 0.993);
+  box-shadow: 0 6px 20px rgba(12, 82, 142, 0.4);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
 }
 
 .shadow__btn:hover {
-  box-shadow: 0 0 5px rgb(0,140,255),
-              0 0 25px rgb(0,140,255),
-              0 0 50px rgb(0,140,255),
-              0 0 100px rgb(0,140,255);
+  background: linear-gradient(100deg, #0c528e, #4139d3);
+  box-shadow: 0 0 5px rgb(0,140,255), 0 0 25px rgb(0,140,255), 0 0 50px rgb(0,140,255);
 }
 
-/* .nav-cta {
-  background: linear-gradient(135deg, var(--deep-blue), var(--indigo));
+.nav-cta {
   color: #fff;
-  padding: 0.7rem 1.5rem;
-  border-radius: 50px;
-  font-weight: 700;
-  box-shadow: 0 8px 18px rgba(47,77,160,0.25);
-  transition: var(--transition);
-} */
-/* 
-.nav-cta:hover {
-  transform: translateY(-2px);
-} */
-
-nav.scrolled .nav-links a {
-  color: var(--text-primary);
+  display: block;
 }
 
-nav.scrolled .nav-cta {
-  color: #fff;
-}
-
+/* ════════════════════════════════════════════════════════════
+   ═══ شاشات الموبايل والتابلت (Responsive Setup) ═══
+   ════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   nav {
-    padding: 1rem 1rem;
+    padding: 1rem;
   }
-  .nav-links {
-    display: none;
-  }
-  .nav-cta {
-    display: none;
-  }
-}
-/* ═══ التنسيقات الأساسية لشريط التنقل ═══ */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  transition: all 0.3s ease-in-out;
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  z-index: 1001; /* يبقى فوق القائمة الجانبية */
-}
-
-.nav-logo-text {
-  display: flex;
-  flex-direction: column;
-}
-
-/* ═══ زر الهمبرغر (قائمة الموبايل) ═══ */
-.mobile-menu-toggle {
-  display: none; /* مخفي في الشاشات الكبيرة */
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1001;
-}
-
-.mobile-menu-toggle .bar {
-  width: 100%;
-  height: 3px;
-  background-color: #fff; /* يتغير حسب تصميمك */
-  border-radius: 10px;
-  transition: all 0.3s ease-in-out;
-}
-
-/* تحويل الزر إلى علامة X عند الفتح */
-.mobile-menu-open .mobile-menu-toggle .bar:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
-}
-.mobile-menu-open .mobile-menu-toggle .bar:nth-child(2) {
-  opacity: 0;
-}
-.mobile-menu-open .mobile-menu-toggle .bar:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
-}
-
-/* عند عمل السكرول، نغير لون خطوط الزر إذا كانت الخلفية بيضاء */
-.scrolled .mobile-menu-toggle .bar {
-  background-color: #000;
-}
-
-/* ═══ متجاوب الشاشات الصغيرة (الهواتف والتابلت) ═══ */
-@media (max-width: 768px) {
+  
   .mobile-menu-toggle {
-    display: flex; /* يظهر فقط هنا */
+    display: flex; 
   }
 
+  /* منيو عائم على شكل بطاقة زجاجية أنيقة وقنينة لا يغلق كامل الصفحة */
   .nav-navigation-wrapper {
     position: fixed;
-    top: 0;
-    right: -100%; /* مخفي خارج الشاشة يميناً */
-    width: 75%;
-    height: 100vh;
-    background-color: rgba(10, 21, 53, 0.98); /* نفس لون خلفية الهيرو الداكن */
-    backdrop-filter: blur(10px);
+    top: 12px;
+    right: -110%; 
+    width: min(280px, 65%); 
+    height: calc(100vh - 24px); 
+    background-color: rgba(10, 21, 53, 0.96); 
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
-    transition: right 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+    gap: 2.5rem;
+    padding: 2rem 1.5rem;
+    box-shadow: -10px 15px 40px rgba(0, 0, 0, 0.5);
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
   }
 
-  /* عندما تصبح القائمة نشطة تندفع للداخل */
+  /* تفعيل دخول المنيو بهامش جانبي راقي */
   .nav-navigation-wrapper.active {
-    right: 0;
+    right: 12px;
   }
 
   .nav-links {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 2.2rem;
     width: 100%;
-    padding: 0;
   }
 
   .nav-links li a {
-    font-size: 1.25rem;
-    color: #fff !important; /* لضمان وضوح الروابط في الخلفية القاتمة */
+    font-size: 1.15rem;
+    color: #f8fafc !important; 
   }
 
   .mobile-cta-btn {
-    margin-top: 1rem;
-    width: 80%;
+    margin-top: 0.5rem;
+    width: 90%;
+    text-align: center;
   }
-  
+
   .nav-logo-text .sub {
-    font-size: 0.7rem; /* تصغير النص الفرعي في الموبايل لكي لا يتداخل */
+    font-size: 0.7rem;
+    width: auto; /* منع تداخل النص العريض في الشاشات الضيقة */
   }
 }
 
-/* ═══ الشاشات الكبيرة ═══ */
+/* ═══ الشاشات الكبيرة (Desktop) ═══ */
 @media (min-width: 769px) {
   .nav-navigation-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-grow: 1;
-    margin-right: 2rem; /* يترك مسافة للشعار */
+    margin-right: 2rem; 
   }
 
   .nav-links {
-    display: flex;
-    flex-direction: row;
     gap: 1.5rem;
-    margin: 0 auto; /* يوسط الروابط في المنتصف */
+    margin: 0 auto; 
   }
-  
-  .mobile-cta-btn {
-    display: block;
-  }
-}
-/* عند نزول المستخدم في الصفحة (Scroll) */
-nav.scrolled {
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-}
-
-/* تعديل لون نصوص القائمة الكبيرة لتصبح داكنة عند عمل السكرول */
-nav.scrolled ul.hidden md\:flex a {
-  color: #1e293b;
-}
-nav.scrolled ul.hidden md\:flex a:hover {
-  color: #0c528e;
-}
-
-/* تنسيحات الزر المخصص لديك (ابقيتها كما هي لكي لا يتغير شكل التصميم الفعلي) */
-.shadow__btn {
- 
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(12, 82, 142, 0.4);
-}
-
-.shadow__btn:hover {
-  border: none;
-  background: linear-gradient(100deg, #0c528e, #4139d3);
-  position: relative;
-  transition: all 0.2s ease;
-}
-
-.nav-cta {
-  color: #fff;
-  display: block;
 }

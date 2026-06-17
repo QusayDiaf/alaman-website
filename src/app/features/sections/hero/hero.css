@@ -31,7 +31,6 @@ html, body {
   height: 100%;
   background: linear-gradient(to bottom, #0a1535 0%, #103566 37%, #163a75 61%, #0c528e 100%);
   z-index: 1;
-  text-align: center;
 }
 
 #x-canvas {
@@ -42,7 +41,6 @@ html, body {
   height: 100%;
   opacity: 0.45;
   display: block;
-  transition: opacity 1s ease-in-out; /* ظهور تدريجي ناعم عند التحميل */
 }
 
 /* ═══ BACKGROUND & GRID ═══ */
@@ -67,23 +65,52 @@ html, body {
     linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
   background-size: 60px 60px;
-  opacity: 0.45;
+  opacity: 0.35;
 }
 
-/* ═══ FLOATING CIRCLES (ثابتة تماماً لمنع التشتيت) ═══ */
+/* ═══ FLOATING CIRCLES (تأثير الطفو العائم والناعم للدوائر) ═══ */
 .float-circle {
   position: absolute;
   border-radius: 50%;
   filter: blur(1px);
-  opacity: 0.2;
+  opacity: 0.15;
+  will-change: transform;
 }
 
-.fc1 { width: 280px; height: 280px; top: -80px; left: -70px; background: rgba(47,77,160,0.4); }
-.fc2 { width: 180px; height: 180px; top: 22%; right: 3%; background: rgba(0,212,255,0.25); }
-.fc3 { width: 140px; height: 140px; bottom: 18%; left: 18%; background: rgba(74,70,163,0.3); }
-.fc4 { width: 200px; height: 200px; top: 60%; left: 40%; background: rgba(0,212,255,0.18); }
-.fc5 { width: 50px; height: 50px; top: 22%; left: 30%; border: 2px solid rgba(0,212,255,0.25); }
-.fc6 { width: 30px; height: 30px; top: 72%; right: 18%; background: rgba(123,158,248,0.35); }
+.fc1 { width: 280px; height: 280px; top: -80px; left: -70px; background: rgba(47,77,160,0.4); animation: floatSlowY 14s ease-in-out infinite alternate; }
+.fc2 { width: 180px; height: 180px; top: 22%; right: 3%; background: rgba(0,212,255,0.25); animation: floatSlowX 10s ease-in-out infinite alternate; }
+.fc3 { width: 140px; height: 140px; bottom: 18%; left: 18%; background: rgba(74,70,163,0.3); animation: floatSlowY 12s ease-in-out infinite alternate; }
+.fc4 { width: 200px; height: 200px; top: 60%; left: 40%; background: rgba(0,212,255,0.18); animation: floatSlowX 16s ease-in-out infinite alternate; }
+.fc5 { width: 50px; height: 50px; top: 22%; left: 30%; border: 2px solid rgba(0,212,255,0.25); animation: floatSlowY 8s ease-in-out infinite alternate; }
+.fc6 { width: 30px; height: 30px; top: 72%; right: 18%; background: rgba(123,158,248,0.35); animation: floatSlowX 9s ease-in-out infinite alternate; }
+
+/* أنميشن الطفو المحوري للدوائر الخلفية */
+@keyframes floatSlowY {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(18px) rotate(5deg); }
+}
+@keyframes floatSlowX {
+  0% { transform: translateX(0px) scale(1); }
+  100% { transform: translateX(15px) scale(1.05); }
+}
+
+/* ═══ SHIELD FLOATING (أنميشن الدرع المركزي) ═══ */
+
+
+/* ═══ SHIELD FLOATING (أنميشن الدرع المركزي المعدل) ═══ */
+
+
+@keyframes floatingShield {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  /* 50%{
+    transform: translate(-6px , 6px);
+  } */
+  100% {
+    transform: translate(0px, -10px );   /* يعود للمركز الأصلي بشكل انسيابي */
+  }
+}
 
 /* ═══ BUTTONS ═══ */
 .btn-primary {
@@ -151,101 +178,22 @@ html, body {
   max-width: 480px;
   aspect-ratio: 1;
   z-index: 2;
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: floatingShield 2s ease-in-out  infinite alternate;
+  will-change: transform;
 }
 
 .hero-3d-svg {
   width: 100%;
   height: 100%;
-  will-change: transform;
-  animation: none; /* إلغاء الحركة تماماً كما طلبت */
 }
 
-/* ═══ IMAGES ═══ */
-img {
-  width: 100%;
-  max-width: 250px;
-  position: absolute;
-  top: 45%;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  z-index: 2;
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-cyan);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px var(--accent-cyan);
 }
-
-/* ═══ TWITTER BUTTON ═══ */
-#btn-twtr {
-  clear: both;
-  color: #fff;
-  border: 2px solid;
-  border-radius: 3px;
-  text-align: center;
-  text-decoration: none;
-  display: block;
-  font-family: sans-serif;
-  font-size: 14px;
-  width: 13em;
-  padding: 5px 10px;
-  font-weight: 600;
-  position: absolute;
-  bottom: 5vh;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  background: rgba(0,0,0,0.2);
-  box-shadow: 0 0 0px 3px rgba(0,0,0,0.2);
-  opacity: 0.3;
-  transition: var(--transition);
-  z-index: 10;
-}
-
-#btn-twtr:hover {
-  color: #fff;
-  opacity: 1;
-}
-html,body{
-  margin:0;
-  overflow:hidden;
-  height:100%
-}
-img{
-  width:100%;
-  max-width:250px;
-  position:absolute;
-  top:45%;
-  left:0;
-  right:0;
-  margin:0 auto
-}
-	.large-header{
-	background:linear-gradient(to bottom, #0a1535 0%,#103566 37%,#163a75 61%,#0c528e 100%);
-    text-align:center
-	}
-#x-canvas{
-  opacity:0.5
-}
-
-
-
-/* follow me @nodws */
-#btn-twtr{
-  clear:both;
-  color:#fff;
-  border:2px solid;
-  border-radius:3px;
-  text-align:center;
-  text-decoration:none;
-  display:block;
-  font-family:sans-serif;
-  font-size:14px;
-  width:13em;
-  padding:5px 10px;
-  font-weight:600;
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  margin:90vh auto;
-  background:rgba(0,0,0,0.2);
-  box-shadow:0 0 0px 3px rgba(0,0,0,0.2);
-  opacity:0.3
-}#btn-twtr:hover{color:#fff;opacity:1}

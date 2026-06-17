@@ -21,7 +21,7 @@
          شركة الأمان الرقمي الجديد
         </span>
         <span [class.text-gray-500]="showstarted && !isMobileMenuOpen" [class.text-slate-400]="!showstarted || isMobileMenuOpen"
-              class="text-[10px] md:text-xs transition-colors duration-300">
+              class="text-[12px] md:text-[16px] transition-colors duration-300">
           لتقنية المعلومات والاتصالات
         </span>
       </a>
@@ -40,16 +40,27 @@
             [class.bg-black]="showstarted && !isMobileMenuOpen" [class.bg-white]="!showstarted || isMobileMenuOpen" 
             class="w-full h-0.5 rounded-full transition-all duration-300 ease-in-out"></span>
     </button>
-
-    <ul class="hidden md:flex items-center gap-6 lg:gap-8">
-      <li><a routerLink="/" fragment="hero"      class="text-white/90 hover:text-cyan-400 text-sm font-medium transition-colors duration-200"><span class="text-gray-200">الرئيسية</span></a></li>
-      <li><a routerLink="/" fragment="about"     class="text-white/90 hover:text-cyan-400 text-sm font-medium transition-colors duration-200"><span class="text-gray-200">من نحن</span></a></li>
-      <li><a routerLink="/" fragment="services"  class="text-white/90 hover:text-cyan-400 text-sm font-medium transition-colors duration-200"><span class="text-gray-200">خدماتنا</span></a></li>
-      <li><a routerLink="/" fragment="portfolio" class="text-white/90 hover:text-cyan-400 text-sm font-medium transition-colors duration-200"><span class="text-gray-200">أعمالنا</span></a></li>
-      <li><a routerLink="/" fragment="technical" class="text-white/90 hover:text-cyan-400 text-sm font-medium transition-colors duration-200"><span class="text-gray-200">مبادئنا</span></a></li>
-      <li><a routerLink="/" fragment="contact"   class="text-white/90 hover:text-cyan-400 text-sm font-medium transition-colors duration-200"><span class="text-gray-200">اتصل بنا</span></a></li>
+    @if (isScrolled)
+{
+      <ul class="hidden md:flex items-center gap-6  lg:gap-8">
+      <li><a routerLink="/" fragment="hero"      ><span class="text-black-500 hover:text-[#00D4FF] relative pb-1 after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:bg-[#00D4FF] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 cursor-pointer font-bold">الرئيسية</span></a></li>
+      <li><a routerLink="/" fragment="about"     ><span class="text-black-500 hover:text-[#00D4FF] relative pb-1 after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:bg-[#00D4FF] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 cursor-pointer font-bold">من نحن</span></a></li>
+      <li><a routerLink="/" fragment="services"  ><span class="text-black-500 hover:text-[#00D4FF] relative pb-1 after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:bg-[#00D4FF] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 cursor-pointer font-bold">خدماتنا</span></a></li>
+      <li><a routerLink="/" fragment="portfolio" ><span class="text-black-500 hover:text-[#00D4FF] relative pb-1 after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:bg-[#00D4FF] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 cursor-pointer font-bold">أعمالنا</span></a></li>
+      <li><a routerLink="/" fragment="technical" ><span class="text-black-500 hover:text-[#00D4FF] relative pb-1 after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:bg-[#00D4FF] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 cursor-pointer font-bold">مبادئنا</span></a></li>
+      <li><a routerLink="/" fragment="contact"   ><span class="text-black-500 hover:text-[#00D4FF] relative pb-1 after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:bg-[#00D4FF] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 cursor-pointer font-bold">اتصل بنا</span></a></li>
     </ul>
-    
+ }
+  @else{
+     <ul class="hidden md:flex items-center gap-6 lg:gap-8">
+      <li><a routerLink="/" fragment="hero"      class="text-white/90 hover:text-cyan-400 text-sm font-medium transition-colors duration-200">> <span class="text-gray-200 hover:text-[#00D4FF] relative pb-1 after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:bg-[#00D4FF] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 cursor-pointer font-bold">الرئيسية</span></a></li>
+      <li><a routerLink="/" fragment="about"     class="text-white/90 hover:text-cyan-400 text-sm font-medium transition-colors duration-200"><span class="text-gray-200 hover:text-[#00D4FF] relative pb-1 after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:bg-[#00D4FF] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 cursor-pointer font-bold">من نحن</span></a></li>
+      <li><a routerLink="/" fragment="services"  class="text-white/90 hover:text-cyan-400 text-sm font-medium transition-colors duration-200"><span class="text-gray-200 hover:text-[#00D4FF] relative pb-1 after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:bg-[#00D4FF] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 cursor-pointer font-bold">خدماتنا</span></a></li>
+      <li><a routerLink="/" fragment="portfolio" class="text-white/90 hover:text-cyan-400 text-sm font-medium transition-colors duration-200"><span class="text-gray-200 hover:text-[#00D4FF] relative pb-1 after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:bg-[#00D4FF] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 cursor-pointer font-bold">أعمالنا</span></a></li>
+      <li><a routerLink="/" fragment="technical" class="text-white/90 hover:text-cyan-400 text-sm font-medium transition-colors duration-200"><span class="text-gray-200 hover:text-[#00D4FF] relative pb-1 after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:bg-[#00D4FF] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 cursor-pointer font-bold">مبادئنا</span></a></li>
+      <li><a routerLink="/" fragment="contact"   class="text-white/90 hover:text-cyan-400 text-sm font-medium transition-colors duration-200"><span class="text-gray-200 hover:text-[#00D4FF] relative pb-1 after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:bg-[#00D4FF] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 cursor-pointer font-bold">اتصل بنا</span></a></li>
+    </ul>
+  }   
     <div class="hidden md:block">
       <a routerLink="/" fragment="contact" class="shadow__btn nav-cta rounded-3xl px-6 py-2.5 inline-block text-sm font-bold">جدولة استشارة</a>
     </div>
@@ -58,12 +69,12 @@
          class="fixed inset-0 w-full h-screen bg-[#0a1535]/98 backdrop-blur-lg flex flex-col items-center justify-center gap-8 transition-all duration-300 ease-in-out -translate-y-full opacity-0 pointer-events-none md:hidden z-40">
       
       <ul class="flex flex-col items-center gap-6 text-xl font-semibold w-full">
-        <li><a routerLink="/" fragment="hero"      (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors"><span class="text-gray-200">الرئيسية</span></a></li>
-        <li><a routerLink="/" fragment="about"     (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors"><span class="text-gray-200">من نحن</span></a></li>
-        <li><a routerLink="/" fragment="services"  (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors"><span class="text-gray-200">خدماتنا</span></a></li>
-        <li><a routerLink="/" fragment="portfolio" (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors"><span class="text-gray-200">أعمالنا</span></a></li>
-        <li><a routerLink="/" fragment="technical" (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors"><span class="text-gray-200">مبادئنا</span></a></li>
-        <li><a routerLink="/" fragment="contact"   (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors"><span class="text-gray-200">اتصل بنا</span></a></li>
+        <li><a routerLink="/" fragment="hero"      (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors"><span class="text-gray-200 hover:text-gray-800">الرئيسية</span></a></li>
+        <li><a routerLink="/" fragment="about"     (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors"><span class="text-gray-200 hover:text-gray-800">من نحن</span></a></li>
+        <li><a routerLink="/" fragment="services"  (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors"><span class="text-gray-200 hover:text-gray-800">خدماتنا</span></a></li>
+        <li><a routerLink="/" fragment="portfolio" (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors"><span class="text-gray-200 hover:text-gray-800">أعمالنا</span></a></li>
+        <li><a routerLink="/" fragment="technical" (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors"><span class="text-gray-200 hover:text-gray-800">مبادئنا</span></a></li>
+        <li><a routerLink="/" fragment="contact"   (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors"><span class="text-gray-200 hover:text-gray-800">اتصل بنا</span></a></li>
       </ul>
       
       <button class="shadow__btn w-2/3 max-w-xs mt-4">

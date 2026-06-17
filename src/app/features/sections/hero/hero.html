@@ -1,11 +1,11 @@
-<section id="hero" class="hero-section">
-  <div id="large-header" class="large-header">
-    <canvas id="x-canvas"></canvas>
+<section id="hero" class="hero-section relative overflow-hidden flex items-center justify-center py-20  md:py-20   lg:py-0" dir="rtl">
+  <div id="large-header" class="large-header absolute inset-0 w-full h-full z-1">
+    <canvas id="x-canvas" class="absolute top-0 left-0 w-full h-full opacity-45 block"></canvas>
   </div>
 
-  <div class="hero-bg">
-    <div class="hero-gradient"></div>
-    <div class="hero-grid"></div>
+  <div class="hero-bg absolute inset-0 overflow-hidden z-1">
+    <div class="hero-gradient absolute inset-0"></div>
+    <div class="hero-grid absolute inset-0 opacity-35"></div>
     <div class="float-circle fc1"></div>
     <div class="float-circle fc2"></div>
     <div class="float-circle fc3"></div>
@@ -14,47 +14,47 @@
     <div class="float-circle fc6"></div>
   </div>
 
-  <div class="relative z-10 w-full max-w-6xl mx-auto px-8 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 pt-20 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
 
-    <div class="text-white text-right flex flex-col items-start ">
-      <div class="pt-4">
-      <span class="inline-flex items-center gap-2 bg-cyan-400/10 border border-cyan-400/30 text-cyan-400 px-4 py-2 rounded-full text-sm font-semibold mb-6 direction-rtl ">
-        <span class="badge-dot"></span>
-        <span >شركة الأمان الرقمي الجديد</span>
-      </span>
+    <div class="text-white text-center lg:text-right flex flex-col items-center lg:items-start order-1">
+      <div class="pt-2 md:pt-4">
+        <span class="inline-flex items-center gap-2 bg-cyan-400/10 border border-cyan-400/30 text-cyan-400 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 lg:mb-6">
+          <span class="badge-dot"></span>
+          <span>شركة الأمان الرقمي الجديد</span>
+        </span>
       </div>
-      <h1 class="text-4xl lg:text-5xl font-black leading-relaxed mb-6 mt-4 max-w-xl text-right">
+      
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black leading-snug sm:leading-relaxed mb-4 lg:mb-6 mt-2 lg:mt-4 max-w-xl">
         نبني حلولاً رقمية ذكية<br>
-        لمستقبل أكثر <span class="text-blue-400">اماناً</span>
+        لمستقبل أكثر <span class="text-blue-400">أماناً</span>
       </h1>
 
-      <p class="text-white/75 text-lg leading-relaxed mb-10 ml-12">
+      <p class="text-white/75 text-base sm:text-lg leading-relaxed mb-8 lg:mb-10 px-4 sm:px-8 lg:px-0 lg:pl-12 max-w-lg lg:max-w-none">
         شريكك الاستراتيجي نحو التحول الرقمي بأصول هندسية وتقنية
       </p>
 
-      <div class="flex gap-4 flex-wrap mb-8 justify-start">
-        <a href="#contact" class="btn-primary">تواصل معانا</a>
-        <a href="#services" class="btn-secondary">عرض خدماتنا</a>
+      <div class="flex flex-row gap-4 flex-wrap mb-8 justify-center lg:justify-start w-full sm:w-auto px-4 sm:px-0">
+        <a href="#contact" class="btn-primary flex-1 sm:flex-none text-center">تواصل معنا</a>
+        <a href="#services" class="btn-secondary flex-1 sm:flex-none text-center">عرض خدماتنا</a>
       </div>
 
-      <div class="flex gap-10 flex-wrap">
-        <div class="text-right">
-          <div class="hero-stat-num"><span>10</span>+</div>
-          <div class="hero-stat-label">سنوات خبرة</div>
+      <div class="flex flex-col sm:flex-row gap-6 sm:gap-10 justify-center lg:justify-start items-center sm:items-start w-full">
+        <div class="text-center lg:text-right border-b border-white/10 sm:border-b-0 pb-4 sm:pb-0 w-full sm:w-auto">
+          <div class="hero-stat-num text-2xl sm:text-3xl lg:text-4xl font-black"><span>10</span>+</div>
+          <div class="hero-stat-label text-xs sm:text-sm mt-1">سنوات خبرة</div>
         </div>
-        <div class="text-right">
-          <div class="hero-stat-num">
-            <span><i class="fa-regular fa-user"></i></span>
+        <div class="text-center lg:text-right flex flex-col items-center lg:items-start w-full sm:w-auto">
+          <div class="hero-stat-num text-2xl sm:text-3xl lg:text-4xl">
+            <span><i class="fa-regular fa-user pr-0 md:pr-10 lg:pr-18"></i></span>
           </div>
-          <div class="hero-stat-label">طاقم عمل ذو خبرة مهنية واسعة</div>
+          <div class="hero-stat-label text-xs sm:text-sm mt-1 max-w-[200px] sm:max-w-none">طاقم عمل ذو خبرة مهنية واسعة</div>
         </div>
       </div>
-
     </div>
 
-    <div class="flex items-center justify-center">
-      <div class="hero-3d-container">
-        <svg class="hero-3d-svg" viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
+    <div class="flex items-center justify-center order-2 lg:order-2 w-full px-4 sm:px-12 md:px-20 lg:px-0 mt-6 lg:mt-0">
+      <div class="hero-3d-container w-full max-w-[260px] sm:max-w-[340px] md:max-w-[380px] lg:max-w-[480px] aspect-square relative z-2">
+        <svg class="hero-3d-svg w-full h-full" viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
               <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.3"/>
@@ -70,12 +70,11 @@
           </defs>
 
           <ellipse cx="240" cy="240" rx="200" ry="200" fill="url(#glow1)" filter="url(#blur1)"/>
-
           <circle cx="240" cy="240" r="180" fill="none" stroke="rgba(47,77,160,0.2)" stroke-width="1" stroke-dasharray="8 12"/>
           <circle cx="240" cy="240" r="150" fill="none" stroke="rgba(0,212,255,0.15)" stroke-width="0.5"/>
           <circle cx="240" cy="240" r="120" fill="none" stroke="rgba(74,70,163,0.3)" stroke-width="1"/>
 
-          <g transform="translate(240,240)">
+          <g transform="translate(240,240)" class="animate-shield">
             <path d="M0,-70 L55,-35 L55,15 Q55,60 0,80 Q-55,60 -55,15 L-55,-35 Z"
                   fill="rgba(47,77,160,0.3)" stroke="rgba(0,212,255,0.6)" stroke-width="1.5"/>
             <path d="M0,-55 L42,-28 L42,12 Q42,48 0,64 Q-42,48 -42,12 L-42,-28 Z"
