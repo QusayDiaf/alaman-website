@@ -60,3 +60,9 @@ a:hover ~ .custom-cursor::after,
 button:hover ~ .custom-cursor::after {
   opacity: 0;
 }
+/* إخفاء المؤشر المخصص في الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
