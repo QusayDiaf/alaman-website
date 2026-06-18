@@ -197,3 +197,8 @@ html, body {
   display: inline-block;
   box-shadow: 0 0 8px var(--accent-cyan);
 }
+@media (max-width: 767px) {
+  #x-canvas {
+    display: none;
+  }
+}

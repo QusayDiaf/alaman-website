@@ -1,6 +1,6 @@
 import { Component ,HostListener} from '@angular/core';
-import { RouterLink } from '@angular/router';
-// import {animations} from 'animate.css';
+import { RouterLink, Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 
 @Component({
@@ -14,15 +14,14 @@ export class Navbar {
 
   isScrolled = false;
   showstarted = false;
+  isMobileMenuOpen = false;
+
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.isScrolled = window.scrollY > 100;
     this.showstarted = window.scrollY > 300;
   }
- 
-  
-  isMobileMenuOpen = false;
 
   toggleMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;

@@ -4,7 +4,7 @@ import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [], 
+  imports: [],
   templateUrl: './hero.html',
   styleUrls: ['./hero.css'],
 })
@@ -12,8 +12,7 @@ export class Hero implements AfterViewInit, OnDestroy {
 
   private animationFrameId: number | null = null;
   private animateHeader = true;
-  
-  // متغيرات الأنيميشن والـ Canvas
+
   private width!: number;
   private height!: number;
   private largeHeader!: HTMLElement | null;
@@ -22,7 +21,6 @@ export class Hero implements AfterViewInit, OnDestroy {
   private points: any[] = [];
   private target!: { x: number; y: number };
 
-  // مستمعي الأحداث لإزالتهم عند تدمير الكومبوننت
   private mouseMoveListener: any;
   private scrollListener: any;
   private resizeListener: any;
@@ -36,12 +34,11 @@ export class Hero implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // إيقاف الـ الأنميشن وتنظيف الأحداث لمنع أي تسريب في الذاكرة (Memory Leak)
     this.animateHeader = false;
     if (this.animationFrameId) {
       cancelAnimationFrame(this.animationFrameId);
     }
-    
+
     if (isPlatformBrowser(this.platformId)) {
       window.removeEventListener('mousemove', this.mouseMoveListener);
       window.removeEventListener('scroll', this.scrollListener);
@@ -50,6 +47,9 @@ export class Hero implements AfterViewInit, OnDestroy {
   }
 
   private initConnectiveMesh(): void {
+    // ✅ أوقف الـ Canvas على شاشات الموبايل (أقل من 768px)
+    if (window.innerWidth < 768) return;
+
     this.largeHeader = document.getElementById('large-header');
     this.canvas = document.getElementById('x-canvas') as HTMLCanvasElement;
 
@@ -60,7 +60,6 @@ export class Hero implements AfterViewInit, OnDestroy {
 
     this.target = { x: this.width / 2, y: this.height / 2 };
 
-    // توليد النقاط العشوائية للشبكة
     this.points = [];
     const puntitos = 20;
     for (let x = 0; x < this.width; x += this.width / puntitos) {
@@ -73,7 +72,6 @@ export class Hero implements AfterViewInit, OnDestroy {
           y: py,
           originY: py,
           active: 0,
-          // سرعات واتجاهات الحركة العشوائية لكل نقطة بدلاً من TweenLite
           vx: (Math.random() - 0.5) * 0.5,
           vy: (Math.random() - 0.5) * 0.5,
           circle: {
@@ -84,7 +82,6 @@ export class Hero implements AfterViewInit, OnDestroy {
       }
     }
 
-    // العثور على أقرب 5 نقاط لكل نقطة لبناء العلاقات والخطوط
     for (let i = 0; i < this.points.length; i++) {
       const closest: any[] = [];
       const p1 = this.points[i];
@@ -106,7 +103,6 @@ export class Hero implements AfterViewInit, OnDestroy {
       p1.closest = closest;
     }
 
-    // تفعيل المستمعين والبدء في دورة الحركة
     this.addEventListeners();
     this.animate();
   }
@@ -118,15 +114,12 @@ export class Hero implements AfterViewInit, OnDestroy {
       this.ctx.clearRect(0, 0, this.width, this.height);
 
       for (const p of this.points) {
-        // تحديث مكان النقاط محلياً لإنتاج تأثير عائم ناعم (جيد للأداء)
         p.x += p.vx;
         p.y += p.vy;
 
-        // ردع النقاط إذا ابتعدت كثيراً عن مركزها الأصلي
         if (Math.abs(p.x - p.originX) > 30) p.vx *= -1;
         if (Math.abs(p.y - p.originY) > 30) p.vy *= -1;
 
-        // حساب المسافة من مؤشر الفأرة وضبط الشفافية بناءً عليها
         const dist = this.getDistance(this.target, p);
         if (dist < 4000) {
           p.active = 0.3;
