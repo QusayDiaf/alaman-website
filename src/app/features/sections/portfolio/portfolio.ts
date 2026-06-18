@@ -27,4 +27,5 @@ export class Portfolio {
       this.view=!this.view
   }
   
+  
 }
