@@ -1,13 +1,12 @@
-─── PROJECTS ───────────────────────────────────────────
+/* ─── PROJECTS ─────────────────────────────────────── */
 
-#projects { 
-  background: #f8fafc; /* تم توحيده مع خلفية bg-slate-50 لضمان التوافق التام */
-  position: relative;  /* ضروري لتموضع الكانفاس */
+#projects {
+  background: #f8fafc;
+  position: relative;
   overflow: hidden;
   padding: 6rem 2rem;
 }
 
-/* ضبط موقع شبكة الأنيميشن التفاعلية في الخلفية */
 #projects-canvas {
   position: absolute;
   top: 0;
@@ -15,10 +14,9 @@
   width: 100%;
   height: 100%;
   z-index: 1;
-  pointer-events: none; /* يسمح بمرور أحداث الماوس للكرت الأساسي */
+  pointer-events: none;
 }
 
-/* جعل حاوية المحتوى تطفو بشكل واضح فوق الأنيمايشن */
 #projects .container {
   position: relative;
   z-index: 2;
@@ -26,7 +24,6 @@
   margin: 0 auto;
 }
 
-/* شبكة كروت المشاريع */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -34,9 +31,8 @@
   margin-top: 3rem;
 }
 
-/* كرت المشروع الأساسي بمظهر زجاجي ناعم */
 .project-card {
-  background: rgba(255, 255, 255, 0.9); 
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: var(--radius-lg);
@@ -46,77 +42,73 @@
   cursor: pointer;
 }
 
-.project-card:hover { 
-  transform: translateY(-6px); 
-  box-shadow: var(--card-hover-shadow); 
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-hover-shadow);
   background: #ffffff;
 }
 
-/* حاوية الصورة المصغرة للمشروع */
 .project-thumb {
   height: 200px;
   position: relative;
   overflow: hidden;
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-.project-thumb svg { 
-  width: 100%; 
-  height: 100%; 
+.project-thumb svg {
+  width: 100%;
+  height: 100%;
 }
 
-/* الطبقة الـ Overlay العائمة عند تمرير الماوس */
 .project-overlay {
-  position: absolute; 
+  position: absolute;
   inset: 0;
   background: rgba(26, 43, 94, 0.85);
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   justify-content: center;
   opacity: 0;
   transition: var(--transition);
 }
 
-.project-card:hover .project-overlay { 
-  opacity: 1; 
+.project-card:hover .project-overlay {
+  opacity: 1;
 }
 
 .project-overlay-btn {
-  background: #fff; 
+  background: #fff;
   color: var(--dark-navy);
   padding: 0.6rem 1.5rem;
   border-radius: 50px;
-  font-size: 0.85rem; 
+  font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
 }
 
-/* تفاصيل محتوى الكرت */
-.project-body { 
-  padding: 1.5rem; 
+.project-body {
+  padding: 1.5rem;
 }
 
-.project-tags { 
-  display: flex; 
-  gap: 0.5rem; 
-  flex-wrap: wrap; 
-  margin-bottom: 0.75rem; 
+.project-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
 }
 
-/* تنسيق الـ Tags مع محاذاة الأيقونات */
 .tag {
   background: rgba(47, 77, 160, 0.08);
   color: var(--deep-blue);
-  font-size: 0.72rem; 
+  font-size: 0.72rem;
   font-weight: 700;
-  padding: 0.3rem 0.6rem; 
+  padding: 0.3rem 0.6rem;
   border-radius: 4px;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem; 
-  white-space: nowrap; 
+  gap: 0.4rem;
+  white-space: nowrap;
 }
 
 .tag i {
@@ -125,28 +117,57 @@
   vertical-align: middle;
 }
 
-.project-title { 
-  font-size: 1rem; 
-  font-weight: 800; 
-  color: var(--dark-navy); 
-  margin-bottom: 0.5rem; 
+.project-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--dark-navy);
+  margin-bottom: 0.5rem;
 }
 
-.project-desc { 
-  font-size: 0.85rem; 
-  color: var(--text-secondary); 
-  line-height: 1.6; 
+.project-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
-/* ─── RESPONSIVE ─── */
+/* ─── MODAL ANIMATIONS ──────────────────────────────── */
+
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes dialogIn {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-backdrop {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(6px);
+  animation: backdropIn 250ms ease forwards;
+}
+
+.modal-box {
+  animation: dialogIn 300ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────── */
+
 @media (max-width: 1024px) {
-  .projects-grid { 
-    grid-template-columns: repeat(2, 1fr); 
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .projects-grid { 
-    grid-template-columns: 1fr; 
+  .projects-grid {
+    grid-template-columns: 1fr;
   }
 }

@@ -1,31 +1,23 @@
-import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-// import { DialogModule } from 'primeng/dialog'; 
-// import { ButtonModule } from 'primeng/button';
-import { DynamicDialogModule } from 'primeng/dynamicdialog';
-import { ButtonModule } from 'primeng/button';
-import { ProductListDemo } from "../../../shared/dialog/dialog/dialog";
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './portfolio.html',
   styleUrls: ['./portfolio.css'],
 })
 export class Portfolio {
+  view: boolean = false;
+  activeProject: { title: string; desc: string } | null = null;
 
-  visible: boolean = false;
-  view :boolean = false;
-  showDialog() {
-    this.visible = true;
+  viewdetiled(title: string, desc: string) {
+    this.activeProject = { title, desc };
+    this.view = true;
   }
-  viewdetiled(){
-    this.view= !this.view;
+
+  closeview() {
+    this.view = false;
   }
-  closeview(){
-      this.view=!this.view
-  }
-  
-  
 }
