@@ -64,12 +64,12 @@
     <div class="hidden md:block">
       <a routerLink="/" fragment="contact" class="shadow__btn nav-cta rounded-3xl px-6 py-2.5 inline-block text-sm font-bold">جدولة استشارة</a>
     </div>
-
-    <div [class.translate-y-0]="isMobileMenuOpen" [class.opacity-100]="isMobileMenuOpen" [class.pointer-events-auto]="isMobileMenuOpen"
+    
+    <div [class.translate-y-0]="isMobileMenuOpen" [class.opacity-100]="isMobileMenuOpen" 
          class="fixed inset-0 w-full h-screen bg-[#0a1535]/98 backdrop-blur-lg flex flex-col items-center justify-center gap-8 transition-all duration-300 ease-in-out -translate-y-full opacity-0 pointer-events-none md:hidden z-40">
       
       <ul class="flex flex-col items-center gap-6 text-xl font-semibold w-full px-6">
-        <li><a routerLink="/" fragment="hero" (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors duration-300 block w-full text-center py-2">الرئيسية</a></li>
+        <li><a routerLink="/" fragment="hero" (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors duration-300 block w-full text-center py-2">الرئيسية </a></li>
         <li><a routerLink="/" fragment="about" (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors duration-300 block w-full text-center py-2">من نحن</a></li>
         <li><a routerLink="/" fragment="services" (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors duration-300 block w-full text-center py-2">خدماتنا</a></li>
         <li><a routerLink="/" fragment="portfolio" (click)="closeMobileMenu()" class="text-white hover:text-cyan-400 transition-colors duration-300 block w-full text-center py-2">أعمالنا</a></li>
@@ -78,6 +78,7 @@
       </ul>
       
       <a routerLink="/" fragment="contact" (click)="closeMobileMenu()" class="shadow__btn w-2/3 max-w-xs mt-4 text-center inline-block font-bold text-white rounded-3xl py-3">جدولة استشارة</a>
+      <a (click)="closeMobileMenu()">exit</a>
     </div>
    
   </div>

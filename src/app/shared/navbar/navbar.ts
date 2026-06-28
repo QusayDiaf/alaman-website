@@ -28,7 +28,7 @@ export class Navbar {
   }
 
   closeMobileMenu() {
-    this.isMobileMenuOpen = false;
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 }
  
