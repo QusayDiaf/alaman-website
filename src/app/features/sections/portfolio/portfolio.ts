@@ -20,4 +20,7 @@ export class Portfolio {
   closeview() {
     this.view = false;
   }
+  isCisModalOpen: boolean = false;
+  isTapModalOpen: boolean = false;
+  isAeoModalOpen: boolean = false;
 }
